@@ -5,6 +5,8 @@
  */
 package algoritmosecuencial;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aldair
@@ -17,6 +19,7 @@ public class Ejercicio6 extends javax.swing.JFrame {
     public Ejercicio6() {
         initComponents();
         this.setLocationRelativeTo(null);
+        txtPalabras.requestFocusInWindow();
         
     }
 
@@ -80,19 +83,47 @@ public class Ejercicio6 extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("Procesador De Datos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+
+        txtCentimetros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCentimetrosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtCentimetros, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 70, 40));
+
+        txtColores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtColoresKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtColores, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 40, 40));
         jPanel1.add(txtTpgar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 250, 40));
+
+        txtPalabras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPalabrasKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPalabras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 60, 40));
 
         cmdBorrar.setBackground(new java.awt.Color(255, 102, 255));
         cmdBorrar.setForeground(new java.awt.Color(255, 255, 255));
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 70, -1));
 
         cmdCalcular.setBackground(new java.awt.Color(204, 102, 255));
         cmdCalcular.setForeground(new java.awt.Color(255, 255, 255));
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aldair\\Desktop\\istock_000019699924small.jpg")); // NOI18N
@@ -117,6 +148,82 @@ public class Ejercicio6 extends javax.swing.JFrame {
         System.exit(0);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        
+        double pal, col, cent, res1, res2, res3, tpagar; 
+        
+        if(txtPalabras.getText().trim().isEmpty() && txtCentimetros.getText().trim().isEmpty() && txtColores.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Por favor LLENE los espacios en blanco");
+        }else if(txtPalabras.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"por favor indique cuantas palabras tiene su articulo","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else if(txtCentimetros.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"por favor indique cuantos centimetros tiene su articulo","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else if(txtColores.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"por favor indique cuantos colores tiene su articulo","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else{   
+        
+         try{   
+        pal=Double.parseDouble(txtPalabras.getText());
+        cent=Double.parseDouble(txtCentimetros.getText());
+        col=Double.parseDouble(txtColores.getText());
+        
+        res1=(pal*20000);
+        res2=(cent*15000);
+        res3=(col*25000);
+        tpagar=(res1+res2+res3);
+        
+        
+        txtTpgar.setText(""+tpagar);
+         
+         }
+         catch(Exception p){
+             JOptionPane.showMessageDialog(null,"hay cantidades incorrectas, por favor verificar","ERROR",JOptionPane.INFORMATION_MESSAGE);
+         }
+         }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        
+        txtPalabras.setText("");
+        txtCentimetros.setText("");
+        txtColores.setText("");
+        
+        txtTpgar.setText("");
+        
+        txtPalabras.requestFocusInWindow();
+              
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtPalabrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPalabrasKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPalabrasKeyTyped
+
+    private void txtCentimetrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCentimetrosKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCentimetrosKeyTyped
+
+    private void txtColoresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtColoresKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtColoresKeyTyped
 
     /**
      * @param args the command line arguments
