@@ -97,6 +97,8 @@ public class Ejercicio6 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtColores, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 40, 40));
+
+        txtTpgar.setEditable(false);
         jPanel1.add(txtTpgar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 250, 40));
 
         txtPalabras.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -177,7 +179,7 @@ public class Ejercicio6 extends javax.swing.JFrame {
         txtTpgar.setText(""+tpagar);
          
          }
-         catch(Exception p){
+         catch(Exception w){
              JOptionPane.showMessageDialog(null,"hay cantidades incorrectas, por favor verificar","ERROR",JOptionPane.INFORMATION_MESSAGE);
          }
          }
@@ -196,7 +198,6 @@ public class Ejercicio6 extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void txtPalabrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPalabrasKeyTyped
-        char c=evt.getKeyChar();
         
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
@@ -206,7 +207,6 @@ public class Ejercicio6 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPalabrasKeyTyped
 
     private void txtCentimetrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCentimetrosKeyTyped
-        char c=evt.getKeyChar();
         
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
@@ -216,7 +216,6 @@ public class Ejercicio6 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCentimetrosKeyTyped
 
     private void txtColoresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtColoresKeyTyped
-        char c=evt.getKeyChar();
         
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
